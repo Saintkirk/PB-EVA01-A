@@ -1,21 +1,18 @@
+from material import Material
 
 
-class Revista:
+class Revista(Material):
+    """Clase hija de Material que representa una revista."""
+
     def __init__(self, titulo, autor, precio, es_nuevo, edicion):
-        
-        self.titulo = titulo
-        self.autor = autor
-        self.__precio = precio
-        self.es_nuevo = (bool)    
-        self.edicion = edicion
-    
-    
+        """Inicializa una revista y valida que su edición sea positiva."""
+        super().__init__(titulo, autor, precio, es_nuevo)
+        if edicion <= 0:
+            print("Error: el número de edición debe ser mayor que 0. No se aceptó el valor.")
+            self.edicion = 0
+        else:
+            self.edicion = edicion
+
     def descripcion(self):
-        
-        print(f"Título: {self.titulo}")
-        print(f"Autor: {self.autor}")
-        print(f"Precio: ${self.__precio}")
-        print(f"Es nuevo: {self.es_nuevo}")
-        print(f"Edicíon: {self.edicion, titulo, autor, precio, es_nuevo}")
-        
-        
+        """Sobrescribe el método de Material y agrega el número de edición."""
+        return f"{super().descripcion()}\nEdición: {self.edicion}"

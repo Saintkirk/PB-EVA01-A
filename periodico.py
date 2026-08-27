@@ -1,18 +1,14 @@
+from material import Material
 
-class Periodico:
-    
-    def __init__(self, edicion, titulo, autor, precio, es_nuevo, fecha_publicacion):
-        self.titulo = titulo
-        self.autor = autor
-        self.__precio = precio
-        self.es_nuevo = bool  
+
+class Periodico(Material):
+    """Clase hija de Material que representa un periódico."""
+
+    def __init__(self, titulo, autor, precio, es_nuevo, fecha_publicacion):
+        """Inicializa un periódico con su fecha de publicación."""
+        super().__init__(titulo, autor, precio, es_nuevo)
         self.fecha_publicacion = fecha_publicacion
-    
-    
+
     def descripcion(self):
-        
-        print(f"Título: {self.titulo}")
-        print(f"Autor: {self.autor}")
-        print(f"Precio: ${self.__precio}")
-        print(f"Es nuevo: {self.es_nuevo}")
-        print(f"Fecha de publicación: {self.fecha_publicacion}")    
+        """Sobrescribe el método de Material y agrega la fecha de publicación."""
+        return f"{super().descripcion()}\nFecha de publicación: {self.fecha_publicacion}"
